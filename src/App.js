@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import axios from 'axios';
-
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import SignUp from './SignUp';
 import Home from './Home';
-
 import PrivateRoute from './Utils/PrivateRoute';
 import PublicRoute from './Utils/PublicRoute';
 import { getToken, removeUserSession, setUserSession } from './Utils/Common';
@@ -39,15 +39,20 @@ function App() {
           <div className="header">
             <NavLink exact activeClassName="active" to="/">Home</NavLink>
             <NavLink activeClassName="active" to="/login">Login</NavLink><small>(Access without token only)</small>
+            <NavLink activeClassName="active" to="/sign-up">SignUp</NavLink><small>(Access without token only)</small>
             <NavLink activeClassName="active" to="/dashboard">Dashboard</NavLink><small>(Access with token only)</small>
           </div>
-          <div className="content">
+
+        <div className="outer">
+        <div className="inner">
             <Switch>
               <Route exact path="/" component={Home} />
               <PublicRoute path="/login" component={Login} />
+              <PublicRoute path="/sign-up" component={SignUp} />
               <PrivateRoute path="/dashboard" component={Dashboard} />
             </Switch>
           </div>
+        </div>
         </div>
       </BrowserRouter>
     </div>

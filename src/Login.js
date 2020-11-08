@@ -24,19 +24,30 @@ function Login(props) {
   }
 
   return (
-    <div>
-      Login<br /><br />
-      <div>
-        Username<br />
-        <input type="text" {...username} autoComplete="new-password" />
+    <form>
+      <h3>Log in</h3>
+      <div className="form-group">
+      <label>Username</label>
+        <input type="text" {...username} className="form-control" autoComplete="new-password" />
       </div>
-      <div style={{ marginTop: 10 }}>
-        Password<br />
-        <input type="password" {...password} autoComplete="new-password" />
+
+      <div className="form-group">
+      <label>Password</label>
+        <input type="password" {...password} className="form-control" autoComplete="new-password" />
       </div>
+
+      <div className="form-group">
+      <div className="custom-control custom-checkbox">
+        <input type="checkbox" className="custom-control-input" id="customCheck1" />
+        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+      </div>
+      </div>
+
+
       {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
-      <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
-    </div>
+      <input type="button" className="btn btn-dark btn-lg btn-block"  value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
+      
+      </form>
   );
 }
 
